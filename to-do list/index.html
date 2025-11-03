@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to - do list - ali gezer</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+
+</head>
+<body>
+    <div class="signature">
+        <div class="clock" id="clock"></div>
+        <div>ali gezer tarafından yapılmıştır.</div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="header-left">
+                <h1>✨ to - do list</h1>
+                <div class="subtitle">günlük görevlerinizi organize edin.</div>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌓 tema</button>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-header">
+                <span>ilerleme</span>
+                <span id="progressText">0%</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="input-row">
+                <input 
+                    type="text" 
+                    id="todoInput" 
+                    placeholder="yeni bir görev ekle..."
+                    onkeypress="if(event.key === 'Enter') addTodo()"
+                >
+                <select class="priority-select" id="prioritySelect">
+                    <option value="low">düşük</option>
+                    <option value="medium" selected>orta</option>
+                    <option value="high">yüksek</option>
+                </select>
+                <select class="category-select" id="categorySelect">
+                    <option value="work">iş</option>
+                    <option value="personal">kişisel</option>
+                    <option value="shopping">alışveriş</option>
+                    <option value="other">diğer</option>
+                </select>
+                <input type="date" id="dateInput">
+            </div>
+            <button id="addBtn" onclick="addTodo()">+ ekle</button>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterTodos('all')">tümü</button>
+            <button class="filter-btn" onclick="filterTodos('active')">aktif</button>
+            <button class="filter-btn" onclick="filterTodos('completed')">tamamlanan</button>
+            <button class="filter-btn" onclick="filterTodos('high')">yüksek öncelik</button>
+            <input type="text" id="searchInput" placeholder="görev ara..." oninput="searchTodos()">
+            <div class="action-buttons">
+                <button class="action-btn" onclick="clearCompleted()">tamamlananları sil</button>
+                <button class="action-btn" onclick="exportData()">dışa aktar</button>
+            </div>
+        </div>
+
+        <ul id="todoList"></ul>
+
+        <div id="statsContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
